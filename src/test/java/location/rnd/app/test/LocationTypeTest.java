@@ -38,7 +38,7 @@ public class LocationTypeTest extends TestCase {
 		LocationType lt = new LocationType(1, new Label("Country", "en_US"));
 		Label label = new Label("Pais", "pt_BR");
 		lt.addLabel(label);
-		assertEquals(1, lt.getLabels().size());
+		assertEquals(2, lt.getLabels().size());
 	}
 
 	public void testGetLabels() {
@@ -50,11 +50,11 @@ public class LocationTypeTest extends TestCase {
 		lt.addLabel(label2);
 		lt.addLabel(label3);
 		
-		assertEquals(3, lt.getLabels().size());
+		assertEquals(4, lt.getLabels().size());
 		
-		assertEquals(label,lt.getLabels().get(0));
-		assertEquals(label2,lt.getLabels().get(1));
-		assertEquals(label3,lt.getLabels().get(2));
+		assertEquals(label,lt.getLabels().get(1));
+		assertEquals(label2,lt.getLabels().get(2));
+		assertEquals(label3,lt.getLabels().get(3));
 		
 	}
 
