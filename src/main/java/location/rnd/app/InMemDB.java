@@ -6,10 +6,21 @@ import java.util.Map;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
+/**
+ * Class to store all location and/or location types in memory. It is used as the local database. 
+ * @author cq
+ *
+ * @param <T>
+ */
 public class InMemDB<T> {
 
 	private final SortedMap<String, T> data = new TreeMap<String, T>();
 
+	
+	/**
+	 * Adds elements to the local database. 
+	 * @param element
+	 */
 	public void addElement(T element) {
 		if (element instanceof Location) {
 			data.put(((Location) element).getDefaultLabel().getLabel(), element);
@@ -27,7 +38,12 @@ public class InMemDB<T> {
 		}
 	}
 
-	public List<T> filter(String search) {
+	/**
+	 * Searchs for match in the database. 
+	 * @param search
+	 * @return
+	 */
+	public List<T> search(String search) {
 		List<T> filteredData = new ArrayList<T>();
 		if (search.length() > 0) {
 			

@@ -1,66 +1,44 @@
 package location.rnd.app;
 
+import java.util.List;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.codehaus.jettison.json.JSONException;
-import org.codehaus.jettison.json.JSONObject;
-
 @Path("broker")
 public class BrokerResource {
 
-	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response div_get(@QueryParam("op") String op){
-		try {
-			JSONObject json = new JSONObject(op);
-			double result = op(json.getString("div"));
-			return Response.ok(new JSONObject().put("result", result).toString()).build();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		JSONObject error = null;
-		try {
-			error = new JSONObject();
-			error.put("error", "invalid operation!");
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return Response.ok(error.toString()).build();
+	public Response brokers() {
+		List<Broker> brokers = BrokerManager.getInstance().getBrokers();
+		Broker[] _brokers = brokers.toArray(new Broker[] {});
+		return Response.status(200).entity(_brokers).build();
 	}
-	
+
 	@POST
 	@Produces(MediaType.APPLICATION_JSON)
-	public Response div_post(@QueryParam("op") String op){
-		try {
-			JSONObject json = new JSONObject(op);
-			double result = op(json.getString("div"));
-			return Response.ok(new JSONObject().put("result", result).toString()).build();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		JSONObject error = null;
-		try {
-			error = new JSONObject();
-			error.put("error", "invalid operation!");
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return Response.ok(error.toString()).build();
+	@Path("/{brokername}")
+	public Response createBroker(@PathParam("brokername") String name) {
+
+		Broker broker = BrokerManager.getInstance().createBroker(name);
+		return Response.status(201).entity(broker).build();
+
 	}
-	
-	private double op(String op){
-		String[] ops = op.split(",");
-		return Double.valueOf(ops[0].trim()) / Double.valueOf(ops[1].trim());
+
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/{brokername}/{location}")
+	public Response searchLocation(@QueryParam("location") String location,
+			@QueryParam("brokername") String name) {
+
+		return Response.ok().build();
 	}
+
 }

@@ -1,6 +1,9 @@
 package location.rnd.app;
 
+import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Hashtable;
+import java.util.List;
 
 
 
@@ -34,5 +37,17 @@ public class BrokerManager {
 		return broker;
 	}
 	
+	public Broker getBroker(String name){
+		return brokers.get(name);
+	}
+	
+	public List<Broker> getBrokers(){
+		Enumeration<Broker> enums = brokers.elements();
+		List<Broker> _brokers = new ArrayList<Broker>();
+		while(enums.hasMoreElements()){
+			_brokers.add(enums.nextElement());
+		}
+		return _brokers;
+	}
 	
 }
