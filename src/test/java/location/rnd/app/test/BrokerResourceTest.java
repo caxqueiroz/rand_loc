@@ -41,7 +41,7 @@ public class BrokerResourceTest extends JerseyTest {
 	@Test
 	public void testGetBroker() {
 		WebResource webResource = resource();
-		Broker[] brokers = webResource.path("broker").get(Broker[].class);
+		Broker[] brokers = webResource.path("/broker").get(Broker[].class);
 		Assert.assertNotNull(brokers);
 
 	}
@@ -49,7 +49,7 @@ public class BrokerResourceTest extends JerseyTest {
 	@Test
 	public void testCreateBroker() {
 		WebResource webResource = resource();
-		Broker broker = webResource.path("broker/mybroker").post(Broker.class);
+		Broker broker = webResource.path("/broker/mybroker").post(Broker.class);
 		Assert.assertNotNull(broker);
 
 	}
