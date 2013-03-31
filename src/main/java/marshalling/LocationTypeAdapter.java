@@ -13,7 +13,6 @@ public class LocationTypeAdapter extends
 			throws Exception {
 
 		return new CustomLocationType()
-				.setDefaultLabel(locationType.getDefaultlabel())
 				.setLabels(locationType.getLabels())
 				.setLevel(locationType.getLevel());
 	}

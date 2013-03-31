@@ -34,11 +34,12 @@ public class BrokerResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{brokername}/{location}")
-	public Response searchLocation(@PathParam("location") String location,
+	public Location[] searchLocation(@PathParam("location") String location,
 			@PathParam("brokername") String name) {
 		List<Location> locations = BrokerManager.getInstance().getBroker(name).searchLocation(location);
 		Location[] _locations = locations.toArray(new Location[]{});
-		return Response.status(200).entity(_locations).build();
+//		return Response.status(200).entity(_locations).build();
+		return _locations;
 	}
 
 }

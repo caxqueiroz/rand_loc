@@ -8,8 +8,6 @@ public class CustomLocationType {
 
 	private int level;
 
-	private Label defaultLabel;
-
 	private List<Label> labels;
 
 	public int getLevel() {
@@ -22,16 +20,13 @@ public class CustomLocationType {
 	}
 
 	public Label getDefaultLabel() {
-		return defaultLabel;
+		return this.labels.get(0);
 	}
 
-	public CustomLocationType setDefaultLabel(Label defaultLabel) {
-		this.defaultLabel = defaultLabel;
-		return this;
-	}
+	
 
 	public List<Label> getLabels() {
-		return labels;
+		return this.labels;
 	}
 
 	public CustomLocationType setLabels(List<Label> labels) {

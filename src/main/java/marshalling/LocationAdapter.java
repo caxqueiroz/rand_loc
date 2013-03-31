@@ -11,13 +11,13 @@ public class LocationAdapter extends XmlAdapter<CustomLocation, Location> {
 	public CustomLocation marshal(Location location) throws Exception {
 
 		return new CustomLocation().setCurrentType(location.getLocationType())
-				.setDefaultLabel(location.getDefaultLabel())
 				.setLabels(location.getLabels());
 	}
 
 	@Override
 	public Location unmarshal(CustomLocation cLocation) throws Exception {
-		Location location = new Location(cLocation.getCurrentType(), cLocation.getDefaultLabel());
+		Location location = new Location(cLocation.getCurrentType(),
+				cLocation.getDefaultLabel());
 		for (Label label : cLocation.getLabels()) {
 			location.addLabel(label);
 		}

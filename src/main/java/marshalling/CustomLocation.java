@@ -13,8 +13,6 @@ public class CustomLocation {
 	
 	private Label[] labels;
 
-	
-	private Label defaultLabel;
 
 	public LocationType getCurrentType() {
 		return currentType;
@@ -36,12 +34,7 @@ public class CustomLocation {
 	}
 
 	public Label getDefaultLabel() {
-		return defaultLabel;
-	}
-
-	public CustomLocation setDefaultLabel(Label defaultLabel) {
-		this.defaultLabel = defaultLabel;
-		return this;
+		return this.labels[0];
 	}
 
 }

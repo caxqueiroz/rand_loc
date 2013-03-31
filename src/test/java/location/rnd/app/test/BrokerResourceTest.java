@@ -54,11 +54,13 @@ public class BrokerResourceTest extends JerseyTest {
 
 	}
 
-	@Test
-	public void testBrokerSearch() {
-		WebResource webResource = resource();
-		Location[] locations = webResource.path("broker/mybroker/Brasil").get(Location[].class);
-		Assert.assertNotNull(locations);
-
-	}
+//	@Test
+//	public void testBrokerSearch() {
+//		WebResource webResource = resource();
+//		Broker broker = webResource.path("broker/mybroker").post(Broker.class);
+//		Assert.assertNotNull(broker);
+//		Location[] locations = webResource.path("broker/mybroker/Brasil").get(Location[].class);
+//		Assert.assertNotNull(locations);
+//
+//	}
 }

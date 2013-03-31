@@ -23,17 +23,17 @@ public class InMemDB<T> {
 	 */
 	public void addElement(T element) {
 		if (element instanceof Location) {
-			data.put(((Location) element).getDefaultLabel().getLabel(), element);
+			data.put(((Location) element).getDefaultLabel().getLabelName(), element);
 			List<Label> labels = ((Location) element).getLabels();
 			for (Label label : labels) {
-				data.put(label.getLabel(), element);
+				data.put(label.getLabelName(), element);
 			}
 		} else if (element instanceof LocationType) {
-			data.put(((LocationType) element).getDefaultlabel().getLabel(),
+			data.put(((LocationType) element).getDefaultlabel().getLabelName(),
 					element);
 			List<Label> labels = ((LocationType) element).getLabels();
 			for (Label label : labels) {
-				data.put(label.getLabel(), element);
+				data.put(label.getLabelName(), element);
 			}
 		}
 	}

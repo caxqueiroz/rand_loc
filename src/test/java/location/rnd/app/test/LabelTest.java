@@ -29,8 +29,8 @@ public class LabelTest extends TestCase {
 
 	public void testGetLabel() {
 		Label lb = new Label("Melbourne", "en_AU");
-		assertNotNull(lb.getLabel());
-		String label = lb.getLabel();
+		assertNotNull(lb.getLabelName());
+		String label = lb.getLabelName();
 		assertEquals("Melbourne",label);
 	}
 
