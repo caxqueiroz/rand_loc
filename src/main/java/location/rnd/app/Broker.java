@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -21,49 +20,56 @@ public class Broker {
 	@XmlElement
 	private final String identifier;
 
-	private final List<String> localesSupported = new ArrayList<String>();
+	
 
 	private final List<LocationOntology> ontologies = new ArrayList<LocationOntology>();
 
 	public Broker() {
 		this.identifier = "broker_" + generateIdentifier();
 		ontologies.add(new LocationOntology(true));
-		processLocales(new String[]{"en_AU","fr_FR","pt_BR"});
+		
 	}
 
 	public Broker(String name) {
 		this.identifier = name;
 		ontologies.add(new LocationOntology(true));
-		processLocales(new String[]{"en_AU","fr_FR","pt_BR"});
+		
 	}
-	
-	public Broker(String name, String[] localesSupported){
+
+	public Broker(String name, String[] localesSupported) {
 		this.identifier = name;
 		ontologies.add(new LocationOntology(true));
-		processLocales(localesSupported);
+		
 	}
 
 	public Broker(String[] localesSupported) {
 		this.identifier = "broker_" + generateIdentifier();
 		ontologies.add(new LocationOntology(true));
-		processLocales(localesSupported);
+		
+
+	}
+	
+	/**
+	 * Searchs for location. It uses the default ontology. As the definition
+	 * lacks information on how multiple ontologies should be supported. In this case
+	 * the default ontology is the first one in the list. 
+	 * @param search
+	 * @return
+	 */
+	public List<Location> searchLocation(String search){
+		
+		LocationOntology ontology = ontologies.get(0);
+		return ontology.search(search);
 		
 	}
 
-	/**
-	 * @param localesSupported
-	 */
-	private void processLocales(String[] localesSupported) {
-		for (String elem : localesSupported) {
-			this.localesSupported.add(elem);
-		}
-	}
+	
 
 	private String generateIdentifier() {
 		Random r = new Random(System.currentTimeMillis());
 		return String.valueOf(r.nextInt());
 	}
-	
+
 	public String getIdentifier() {
 		return this.identifier;
 	}
@@ -79,9 +85,6 @@ public class Broker {
 		int result = 1;
 		result = prime * result
 				+ ((identifier == null) ? 0 : identifier.hashCode());
-		result = prime
-				* result
-				+ ((localesSupported == null) ? 0 : localesSupported.hashCode());
 		result = prime * result
 				+ ((ontologies == null) ? 0 : ontologies.hashCode());
 		return result;
@@ -101,11 +104,6 @@ public class Broker {
 				return false;
 		} else if (!identifier.equals(other.identifier))
 			return false;
-		if (localesSupported == null) {
-			if (other.localesSupported != null)
-				return false;
-		} else if (!localesSupported.equals(other.localesSupported))
-			return false;
 		if (ontologies == null) {
 			if (other.ontologies != null)
 				return false;
@@ -113,6 +111,7 @@ public class Broker {
 			return false;
 		return true;
 	}
+
 	
-	
+
 }

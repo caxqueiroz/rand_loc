@@ -1,15 +1,10 @@
 package location.rnd.app.test;
 
-
-
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.ws.rs.core.GenericEntity;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-
 import location.rnd.app.Broker;
+import location.rnd.app.Location;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -59,4 +54,11 @@ public class BrokerResourceTest extends JerseyTest {
 
 	}
 
+	@Test
+	public void testBrokerSearch() {
+		WebResource webResource = resource();
+		Location[] locations = webResource.path("broker/mybroker/Brasil").get(Location[].class);
+		Assert.assertNotNull(locations);
+
+	}
 }

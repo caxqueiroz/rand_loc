@@ -7,7 +7,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -35,10 +34,11 @@ public class BrokerResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{brokername}/{location}")
-	public Response searchLocation(@QueryParam("location") String location,
-			@QueryParam("brokername") String name) {
-
-		return Response.ok().build();
+	public Response searchLocation(@PathParam("location") String location,
+			@PathParam("brokername") String name) {
+		List<Location> locations = BrokerManager.getInstance().getBroker(name).searchLocation(location);
+		Location[] _locations = locations.toArray(new Location[]{});
+		return Response.status(200).entity(_locations).build();
 	}
 
 }

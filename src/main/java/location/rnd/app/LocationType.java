@@ -55,9 +55,9 @@ public final class LocationType {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((defaultLabel == null) ? 0 : defaultLabel.hashCode());
-		result = prime * result + ((labels == null) ? 0 : labels.hashCode());
+//		result = prime * result
+//				+ ((defaultLabel == null) ? 0 : defaultLabel.hashCode());
+//		result = prime * result + ((labels == null) ? 0 : labels.hashCode());
 		result = prime * result + level;
 		return result;
 	}
@@ -71,16 +71,16 @@ public final class LocationType {
 		if (getClass() != obj.getClass())
 			return false;
 		LocationType other = (LocationType) obj;
-		if (defaultLabel == null) {
-			if (other.defaultLabel != null)
-				return false;
-		} else if (!defaultLabel.equals(other.defaultLabel))
-			return false;
-		if (labels == null) {
-			if (other.labels != null)
-				return false;
-		} else if (!labels.equals(other.labels))
-			return false;
+//		if (defaultLabel == null) {
+//			if (other.defaultLabel != null)
+//				return false;
+//		} else if (!defaultLabel.equals(other.defaultLabel))
+//			return false;
+//		if (labels == null) {
+//			if (other.labels != null)
+//				return false;
+//		} else if (!labels.equals(other.labels))
+//			return false;
 		if (level != other.level)
 			return false;
 		return true;
