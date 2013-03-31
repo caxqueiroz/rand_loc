@@ -37,8 +37,18 @@ public class BrokerManager {
 		return broker;
 	}
 	
+	/**
+	 * To avoid to have to create some brokers initially. I am creating one automatically.
+	 * 
+	 * @param name
+	 * @return
+	 */
 	public Broker getBroker(String name){
+		if(!brokers.containsKey(name))
+			this.createBroker(name);
+	
 		return brokers.get(name);
+			
 	}
 	
 	public List<Broker> getBrokers(){
