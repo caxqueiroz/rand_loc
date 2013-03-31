@@ -35,7 +35,7 @@ public class InMemDBTest extends TestCase {
 		locations.addElement(location0);
 		
 
-		List<Location> filteredLocations = locations.filter(search);
+		List<Location> filteredLocations = locations.search(search);
 
 		assertNotNull(filteredLocations);
 		assertEquals(0, filteredLocations.size());
@@ -57,7 +57,7 @@ public class InMemDBTest extends TestCase {
 		locations.addElement(location0);
 		
 
-		List<Location> filteredLocations = locations.filter(search);
+		List<Location> filteredLocations = locations.search(search);
 
 		assertNotNull(filteredLocations);
 		assertEquals(1, filteredLocations.size());
@@ -78,7 +78,7 @@ public class InMemDBTest extends TestCase {
 		locations.addElement(location0);
 		
 
-		List<Location> filteredLocations = locations.filter(search);
+		List<Location> filteredLocations = locations.search(search);
 
 		assertNotNull(filteredLocations);
 		assertEquals(1, filteredLocations.size());
@@ -99,7 +99,7 @@ public class InMemDBTest extends TestCase {
 		locations.addElement(location0);
 		
 
-		List<Location> filteredLocations = locations.filter(search);
+		List<Location> filteredLocations = locations.search(search);
 
 		assertNotNull(filteredLocations);
 		assertEquals(1, filteredLocations.size());
@@ -127,7 +127,7 @@ public class InMemDBTest extends TestCase {
 		
 		locations.addElement(location1);
 
-		List<Location> filteredLocations = locations.filter(search);
+		List<Location> filteredLocations = locations.search(search);
 
 		assertNotNull(filteredLocations);
 		assertEquals(2, filteredLocations.size());
