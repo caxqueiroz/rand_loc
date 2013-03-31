@@ -60,7 +60,7 @@ public final class LocationOntology {
 		if (search != null && search.length() > 0) {
 			for (Map.Entry<LocationType, InMemDB<Location>> dbentries : databases
 					.entrySet()) {
-				LocationType type = dbentries.getKey();
+				//LocationType type = dbentries.getKey();
 				InMemDB<Location> db = dbentries.getValue();
 				List<Location> locations = db.search(search);
 				locationsFound.addAll(locations);

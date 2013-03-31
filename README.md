@@ -16,3 +16,11 @@ To see the search text field.
 
 To use the API:
 
+http:<IP>:<port>/location/api/broker/<new broker>
+
+to add new broker. 
+
+
+http:<IP>:<port>/location/api/broker/<broker>/<search term>
+
+to search for locations. 

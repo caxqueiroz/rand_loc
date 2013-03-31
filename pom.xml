@@ -49,5 +49,5 @@
   	<name>Random</name>
   </organization>
   <groupId>location.rnd</groupId>
-  <artifactId>application</artifactId>
+  <artifactId>location</artifactId>
 </project>
